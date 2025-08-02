@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow-sm p-4 mb-4">
+    <h2 class="mb-3">Input Transaksi Penjualan</h2>
+    <form method="post" class="row g-3">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="col-12">
+            <button type="submit" class="btn btn-success">
+                💾 Simpan Transaksi
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="card shadow-sm p-4">
+    <h3 class="mb-3">Data Penjualan</h3>
+    <table class="table table-striped table-hover align-middle">
+        <thead class="table-primary">
+            <tr>
+                <th>Tanggal</th>
+                <th>Produk</th>
+                <th>Jumlah</th>
+                <th>Total</th>
+                <th>Kasir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in data %}
+            <tr>
+                <td>{{ p.tanggal }}</td>
+                <td>{{ p.produk }}</td>
+                <td>{{ p.jumlah }}</td>
+                <td>Rp{{ p.total_harga|floatformat:0 }}</td>
+                <td>{{ p.kasir }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center text-muted">Belum ada transaksi.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

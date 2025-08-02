@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mb-4">
+    <!-- Card Penjualan Harian -->
+    <div class="col-md-6 mb-3">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body">
+                <h5 class="card-title text-muted">Penjualan Hari Ini</h5>
+                <h2 class="text-primary fw-bold">{{ total_harian }}</h2>
+                <p class="text-muted mb-0">Transaksi yang tercatat hari ini</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Penjualan Mingguan -->
+    <div class="col-md-6 mb-3">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body">
+                <h5 class="card-title text-muted">Penjualan Minggu Ini</h5>
+                <h2 class="text-success fw-bold">{{ total_mingguan }}</h2>
+                <p class="text-muted mb-0">Total transaksi selama minggu berjalan</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tombol Aksi -->
+<div class="d-flex gap-2">
+    <a href="{% url 'transaksi' %}" class="btn btn-primary btn-lg shadow-sm">
+        ➕ Input Transaksi
+    </a>
+    <a href="{% url 'admin:index' %}" class="btn btn-outline-secondary btn-lg shadow-sm">
+        ⚙️ Kelola Data
+    </a>
+</div>
+{% endblock %}
